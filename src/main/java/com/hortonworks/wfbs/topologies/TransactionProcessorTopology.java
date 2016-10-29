@@ -102,23 +102,23 @@ public class TransactionProcessorTopology {
 		int executors_outHDFSRatio = args.length > 7 ? Integer.parseInt(args[7]) : 4;
 		int executors_outIndexRatio = args.length > 8 ? Integer.parseInt(args[8]) : 4;
 		//We can have up to MAX_PARALLEL_PATHS parallel paths from spout to normalization to all the various sinks
-		int parallelPaths = args.length > 9 ? Integer.parseInt(args[9]) : MAX_PARALLEL_PATHS;
+		int parallelPaths = args.length > 9 ? Integer.parseInt(args[9]) : 1;
 		if (parallelPaths < 0 || parallelPaths > MAX_PARALLEL_PATHS) {
 			parallelPaths = MAX_PARALLEL_PATHS;			
 		}
 		//For the downstream systems, we can choose to turn off normalization onwards, or turn off each
 		//of the sinks for easier tuning
 		boolean truncateFromNormalize = args.length > 10 ? Boolean.parseBoolean(args[10]) : false;
-		logger.debug("arg11:" + args[10]);
+		if (args.length > 10) logger.debug("arg11:" + args[10]);
 		logger.debug("truncateFromNormalize:" + truncateFromNormalize);
 		boolean truncateRepub = args.length > 11 ? Boolean.parseBoolean(args[11]) : false;
-		logger.debug("arg12:" + args[11]);
+		if (args.length > 11) logger.debug("arg12:" + args[11]);
 		logger.debug("truncateRepub:" + truncateRepub);
 		boolean truncateHDFS = args.length > 12 ? Boolean.parseBoolean(args[12]) : false;
-		logger.debug("arg13:" + args[12]);
+		if (args.length > 12) logger.debug("arg13:" + args[12]);
 		logger.debug("truncateHDFS:" + truncateHDFS);
 		boolean truncateIndex = args.length > 13 ? Boolean.parseBoolean(args[13]) : false;
-		logger.debug("arg14:" + args[13]);
+		if (args.length > 13) logger.debug("arg14:" + args[13]);
 		logger.debug("truncateIndex:" + truncateIndex);
 
 		int jms_prefetch = args.length > 14 ? Integer.parseInt(args[14]) : 15000;
@@ -127,27 +127,27 @@ public class TransactionProcessorTopology {
 		boolean jms_optimizeack = args.length > 17 ? Boolean.parseBoolean(args[17]) : true;
 
 		boolean archiveRaw = args.length > 18 ? Boolean.parseBoolean(args[18]) : false;
-		logger.debug("arg19:" + args[18]);
+		if (args.length > 18) logger.debug("arg19:" + args[18]);
 		logger.debug("archiveRaw:" + archiveRaw);
 		//System.err.println("archiveRaw " + archiveRaw);
 
 		long JMSSleepTime = args.length > 19 ? Long.parseLong(args[19]) : 20;
-		logger.debug("arg20:" + args[19]);
+		if (args.length > 19) logger.debug("arg20:" + args[19]);
 		logger.debug("JMSSleepTime:" + JMSSleepTime);
 		//System.err.println("JMSSleepTime " + JMSSleepTime);
 		
 		boolean jms_usecompression = args.length > 20 ? Boolean.parseBoolean(args[20]) : true;
-		logger.debug("arg21:" + args[20]);
+		if (args.length > 20) logger.debug("arg21:" + args[20]);
 		logger.debug("jms_usecompression:" + jms_usecompression);
 		//System.err.println("KAFKA " + kafka);
 		
 		boolean kafka = args.length > 21 ? Boolean.parseBoolean(args[21]) : false;
-		logger.debug("arg22:" + args[21]);
+		if (args.length > 21) logger.debug("arg22:" + args[21]);
 		logger.debug("kafka:" + kafka);
 		//System.err.println("KAFKA " + kafka);
 
 		boolean inlineRaw = args.length > 22 ? Boolean.parseBoolean(args[22]) : false;
-		logger.debug("arg23:" + args[22]);
+		if (args.length > 22) logger.debug("arg23:" + args[22]);
 		logger.debug("inlineRaw:" + inlineRaw);
 		//System.err.println("inlineRaw " + inlineRaw);
 		
